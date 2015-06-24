@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Streetview Plotter</title>
+        <link rel="stylesheet" type="text/css" href="assets/css/styles.css">
+    </head>
+    <body>
+        <div id="map">
+            <div class="border no-scroll">
+                <h1>Map</h1>
+                <div id="map-canvas"></div>
+                <div id="map-crosshair">
+                    <div class="line"></div>
+                    <div class="line"></div>
+                </div>
+                <div id="map-center-coordinates">
+                    <span class="lat">undefined</span>,
+                    <span class="lng">undefined</span>
+                    <button id="action-set-target">
+                        Set as Target
+                    </button>
+                </div>
+                <div id="map-searcher">
+                    <input type="text" placeholder="Search for a location"></div>
+                </div>
+            </div>
+        </div>
+        <div id="parameters">
+            <div class="border">
+                <h1>Parameters &amp; Controls</h1>
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="parameter">Parameter</th>
+                            <th class="value">Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>API Key</td>
+                            <td>
+                                <input id="param-api-key" type="text" value="">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Target Lat</td>
+                            <td>
+                                <input id="param-target-lat" type="text" value="">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Target Lng</td>
+                            <td>
+                                <input id="param-target-lng" type="text" value="">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Default Pitch</td>
+                            <td>
+                                <input id="param-pitch" type="text" value="10">
+                                <small>
+                                    Angles the camera, positive values angle the camera up (with 90 degrees indicating
+                                    straight up); negative values angle the camera down (with -90 indicating straight
+                                    down).
+                                </small>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Default FoV (zoom)</td>
+                            <td>
+                                <input id="param-fov" type="text" value="90">
+                                <small>
+                                    Expressed in degrees, with a maximum allowed value of 120
+                                </small>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Frame Width</td>
+                            <td>
+                                <input id="param-frame-width" type="text" value="600">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Frame Height</td>
+                            <td>
+                                <input id="param-frame-height" type="text" value="338">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p>
+                    <button id="action-preview">
+                        Preview Animation
+                    </button>
+                    <button id="action-export-data">
+                        Export Data
+                    </button>
+                    <button id="action-export-frames">
+                        Export Frames
+                    </button>
+                    <button id="action-import-data">
+                        Import Data
+                    </button>
+                    <button id="action-clear-frames">
+                        Clear Frames
+                    </button>
+                </p>
+                <p>
+                    <textarea id="export-target"></textarea>
+                </p>
+            </div>
+        </div>
+        <div id="frames">
+            <div class="border">
+                <h1>Frames</h1>
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="number">#</th>
+                            <th class="lat">Lat</th>
+                            <th class="lng">Lng</th>
+                            <th class="pitch">Pitch</th>
+                            <th class="fov">FOV</th>
+                            <th class="preview">Preview</th>
+                            <th class="action">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+        <div id="player">
+            <div class="border no-scroll">
+                <h1>Preview</h1>
+                <div id="player-canvas">
+                    <div id="player-info">
+                        <span>Player ready</span>
+                        <button id="action-player-stop">
+                            Stop
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=geometry"></script>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+        <script type="text/javascript" src="assets/js/streetviewplotter.min.js"></script>
+        <script type="text/javascript">
+            var app = new APP();
+        </script>
+    </body>
+</html>
